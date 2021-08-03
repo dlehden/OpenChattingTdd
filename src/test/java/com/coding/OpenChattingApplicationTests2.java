@@ -45,7 +45,7 @@ class OpenChattingApplicationTests2 {
 	@Test
 	void 방나가고들어오는상태() {
 		splitIdAndNickname(record);
-		EnterLeavePrint();
+		enterLeavePrint();
 		
 	}
 	
@@ -57,20 +57,16 @@ class OpenChattingApplicationTests2 {
 			    	keydata.add(keyword[1]);
 			    	idMap.put(keyword[1], keyword[2]);
 			    	printdata.add("en"+"님이 들어왔습니다-"+keyword[1]);
-			    	//System.out.println(idMap.get(keyword[1]) + "님이 들어왔습니다-en"+keyword[1]);
 			    }else if(keyword[0].equals("Leave")) { //이미 기존에 아이디가 해쉬맵에 있다는 전제하에
 			    	idMap.get(keyword[1]);
 			    	printdata.add("lv"+"님이 나갔습니다-"+keyword[1]);
-			    	//System.out.println(idMap.get(keyword[1]) + "님이 나갔습니다-lv"+keyword[1]);
 			    }else if(keyword[0].equals("Change")) { //이미 기존에 아이디가 해쉬맵에 있다는 전제하에
 			    	idMap.put(keyword[1], keyword[2]);
-			    	//printdata.add(idMap.get(keyword[1]) + "님이 변경됬습니다-cn"+keyword[1]);
-			    	//System.out.println(idMap.get(keyword[1]) + "님이 나갔습니다-lv"+keyword[1]);
 			    }
 		}
 	}
 	
-	private void EnterLeavePrint() {
+	private void enterLeavePrint() {
 		for(int i=0; i < printdata.size(); i++) {
 			String nickName = idMap.get(printdata.get(i).substring(printdata.get(i).length()-7));
 			if(printdata.get(i).substring(0,2).equals("en")){
